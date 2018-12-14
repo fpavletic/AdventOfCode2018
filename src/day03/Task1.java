@@ -1,10 +1,11 @@
 package day03;
 
+import util.Pair;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -29,28 +30,5 @@ public class Task1 {
             }
         }
         System.out.println(coordinatesToOccupied.values().stream().filter((i) -> i > 1).count());
-    }
-
-    public static class Pair {
-        private final int x, z;
-
-        public Pair(int x, int z){
-            this.x = x;
-            this.z = z;
-        }
-
-        @Override
-        public boolean equals(Object o){
-            if ( this == o ) return true;
-            if ( o == null || getClass() != o.getClass() ) return false;
-            Pair pair = (Pair) o;
-            return x == pair.x &&
-                    z == pair.z;
-        }
-
-        @Override
-        public int hashCode(){
-            return Objects.hash(x, z);
-        }
     }
 }

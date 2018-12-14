@@ -1,5 +1,7 @@
 package day03;
 
+import util.Pair;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -16,7 +18,7 @@ public class Task2 {
     public static void main(String[] args) throws IOException{
 
         Map<Integer, Boolean> idToIsOverlapping = new HashMap<>();
-        Map<Task1.Pair, Integer> coordinatesToId = new HashMap<>();
+        Map<Pair, Integer> coordinatesToId = new HashMap<>();
 
         List<String> lines = Files.readAllLines(Paths.get("./src/day03/input.txt"));
         for ( String line : lines ) {
@@ -28,7 +30,7 @@ public class Task2 {
             int maxI = Integer.parseInt(m.group(4)), maxJ = Integer.parseInt(m.group(5));
             for ( int i = 0; i < maxI; i++ ) {
                 for ( int j = 0; j < maxJ; j++ ) { // for every tile claimed
-                    Task1.Pair coordinates = new Task1.Pair(i + x, j + z);
+                    Pair coordinates = new Pair(i + x, j + z);
                     Integer mapId = coordinatesToId.merge(coordinates, id, (oldId, newId) -> oldId);
                     if ( !mapId.equals(id) ) { // if tile is already claimed by another elf
                         isOverlapping = true; // is overlapping
